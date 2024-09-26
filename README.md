@@ -27,4 +27,52 @@ int main() {
  return 0;
 }
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q2)SUM OF DIGITS OF NUMBER:
+tc=O(n)
+#include <bits/stdc++.h>
+using namespace std;
+int solve(int n){
+    if(n==0){
+        return 0;
+    }
+    return n%10+solve(n/10);
+}
+int main() {
+   int n;
+   cin>>n;
+   cout<<solve(n);
+return 0;
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q3) POWER CALCULATION
+
+#include <bits/stdc++.h>
+using namespace std;
+
+double solve(double a, int b) {
+    if (b == 0) {
+        return 1;  // Base case: any number raised to the power 0 is 1
+    }
+    if(b<0){
+        b=abs(b);
+        a=1/a;
+        
+ }
+    if(b%2==0){
+        return solve(a*a,b/2);
+    }
+    return a * solve(a, b - 1);  // Multiply a by the result of a^(b-1)
+}
+
+int main() {
+    double a;
+    int b;
+    cin >> a;
+    cin>> b;
+    cout << solve(a, b) << endl;
+
+return 0;
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
