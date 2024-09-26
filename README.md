@@ -1,4 +1,4 @@
-# recusrion_questions
+# recursion_questions
 contain all the resursion questions and their implementation
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Q1) IMPLEMENTING BINARY SERACH BY RECURSION   : tc=O(logn)
@@ -70,9 +70,30 @@ int main() {
     cin >> a;
     cin>> b;
     cout << solve(a, b) << endl;
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q4) SUM OF AN ARRAY: tc=O(n)
+#include <bits/stdc++.h>
+using namespace std;
+int solve(vector<int>& arr,int index,int n,int sum){
+    if(index==n){
+        return sum;
+    }
+    return solve(arr,index+1,n,sum+arr[index]);
+}
 
+
+
+int main() {
+    vector<int> arr={1,2,3,4,5};
+   int n = arr.size();
+    cout<<solve(arr,0,n,0);
+    
 return 0;
 }
+
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q5) 
+
 
 
