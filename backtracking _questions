@@ -1,0 +1,105 @@
+intermediate questions of recursion->
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1) PERMUTATION OF A STRING : tc=O(n * n!)
+#include <bits/stdc++.h>
+using namespace std;
+void solve(int index,vector<string>& s,vector<vector<string>>& result){
+    if(index==s.size()){
+        result.push_back(s);
+        return;
+    }
+    for(int i=index;i<s.size();i++){
+        swap(s[i],s[index]);
+        solve(index+1,s,result);
+        swap(s[i],s[index]);
+    }
+}
+
+int main() {
+    vector<string> s={"A","B","C"};
+   
+    vector<vector<string>> result;
+    solve(0,s,result);
+    for(auto res:result){
+        cout<<'{';
+        for(auto i :res){
+            cout<<i<<' ';
+            
+        }
+        cout<<'}'<<endl;;
+    }
+   
+
+    return 0;
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2) PERMUTATION OF INTEGER : tc O(n* n!)
+  #include <bits/stdc++.h>
+using namespace std;
+void solve(int index,vector<int>& arr,vector<vector<int>>& result){
+    if(index==arr.size()){
+        result.push_back(arr);
+        return;
+    }
+    for(int i=index;i<arr.size();i++){
+        swap(arr[i],arr[index]);
+        solve(index+1,arr,result);
+        swap(arr[i],arr[index]);
+    }
+}
+
+int main() {
+    vector<int> arr={1,2,3};
+   
+    vector<vector<int>> result;
+    solve(0,arr,result);
+    for(auto res:result){
+        cout<<'{';
+        for(auto i :res){
+            cout<<i<<' ';
+            
+        }
+        cout<<'}'<<endl;;
+    }
+   
+
+    return 0;
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3) GENERATE ALL SUBSEQUENCES AND SUBSET OF INTEGER : tc-O( 2^n * n)
+#include <bits/stdc++.h>
+using namespace std;
+void solve(int index,vector<int>& arr,vector<int> subset,vector<vector<int>>& result){
+    if(index==arr.size()){
+        result.push_back(subset);
+        return;
+    }
+    subset.push_back(arr[index]);
+    solve(index+1,arr,subset,result);
+    subset.pop_back();
+     solve(index+1,arr,subset,result);
+    
+}
+
+int main() {
+    vector<int> arr={1,2,3};
+    vector<int> subset;
+   
+    vector<vector<int>> result;
+    solve(0,arr,subset,result);
+    for(auto res:result){
+        cout<<'{';
+        for(auto i :res){
+            cout<<i<<' ';
+            
+        }
+        cout<<'}'<<endl;;
+    }
+   
+
+    return 0;
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4) GENERATE PARANTHESIS : TC
+
