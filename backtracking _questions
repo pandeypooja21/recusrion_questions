@@ -100,6 +100,55 @@ int main() {
 
     return 0;
 }
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-4) GENERATE PARANTHESIS : TC
+_________________________________________________________________________________________________________________________________________________________________________________________________________________
 
+4) GENERATE PARANTHESIS : TC=
+#include <bits/stdc++.h>
+using namespace std;
+vector<string> result;
+
+    void solve(int n, string curr, int open, int close) {
+        if(curr.length() == 2*n) {
+            result.push_back(curr);
+            return;
+        }
+        
+        if(open < n) {
+            curr.push_back('(');
+            solve(n, curr, open+1, close);
+            curr.pop_back();
+        }
+        if(close < open) {
+            curr.push_back(')');
+            solve(n, curr, open, close+1);
+            curr.pop_back();
+        }
+    }
+    vector<string> generateParenthesis(int n) {
+        string curr = "";
+
+        solve(n, curr, 0, 0);
+
+        return result;
+    }
+
+int main() {
+ int n;
+    
+    cin >> n;
+    
+    
+    vector<string> validCombinations = generateParenthesis(n);
+    
+    
+    
+    for( auto& comb : validCombinations) {
+        cout << comb << endl;
+    }
+
+    return 0;
+}
+
+___________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+Q5) COMBINATIONAL SUM : TC=
