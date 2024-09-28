@@ -151,4 +151,90 @@ int main() {
 
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-Q5) COMBINATIONAL SUM : TC=
+Q5) COMBINATIONAL SUM -1: TC=
+---------------------------------------------------------------------------------------------------------
+ //The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the 
+frequency  of at least one of the chosen numbers is different.//
+----------------------------------------------------------------------
+#include <bits/stdc++.h>
+using namespace std;
+
+
+void solve(int target, int i, vector<int>& combination, vector<vector<int>>& result, vector<int>& arr) {
+    if (target == 0) {
+        result.push_back(combination);
+        return;
+    }
+    if (i == arr.size()) {
+        return;
+    }
+    if (arr[i] <= target) {
+        combination.push_back(arr[i]);
+        solve(target - arr[i], i, combination, result, arr);
+        combination.pop_back(); // backtrack
+    }
+    solve(target, i + 1, combination, result, arr);
+}
+
+vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+    vector<vector<int>> result;
+    vector<int> combination;
+    solve(target, 0, combination, result, candidates);
+    return result;
+}
+
+
+int main() {
+    // Example input
+    vector<int> candidates = {2, 3, 6, 7};
+    int target = 7;
+    
+    // Get the result
+    vector<vector<int>> result = combinationSum(candidates, target);
+
+    // Print the result
+    cout << "Combinations that sum to " << target << " are:\n";
+    for (const auto& combination : result) {
+        cout << "[ ";
+        for (int num : combination) {
+            cout << num << " ";
+        }
+        cout << "]";
+    }
+
+    return 0;
+}
+__________________________________________________________________________________________________________________________________________________________________________________________________________________
+Q6) SUBSET SUM :
+#include <bits/stdc++.h>
+using namespace std;
+
+
+void solve(int index,vector<int> &arr,vector<int> &result,int n,int sum){
+      if(index==n){
+          result.push_back(sum);
+          return;
+      }
+      solve(index+1,arr,result,n,sum+arr[index]);
+       solve(index+1,arr,result,n,sum);
+      
+  }
+    vector<int> subsetSums(vector<int> arr, int n) {
+        vector<int> result;
+       
+        int sum=0;
+        solve(0,arr,result,n,sum);
+        return result;
+        
+    }
+int main(){
+    vector<int> arr={3,1,4};
+    int n=3;
+    vector<int> ans=subsetSums(arr,n);
+   
+    for(auto res:ans){
+        cout<<res<<" ";
+    }
+    return 0;
+}
+___________________________________________________________________________________________________________________________________________________________________________________________________________________
